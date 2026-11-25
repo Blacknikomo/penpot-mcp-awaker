@@ -1,0 +1,37 @@
+{
+  "name": "penpot-electron-awaker",
+  "version": "0.1.0",
+  "description": "Electron shell for penpot.app that keeps the page (and the Penpot MCP plugin) awake and recovers it when it goes to sleep.",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check src/main.js && node --check src/preload.js && node --check src/config.js",
+    "dist": "electron-builder --mac --arm64"
+  },
+  "devDependencies": {
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0"
+  },
+  "productName": "Penpot Awaker",
+  "build": {
+    "appId": "app.penpot.awaker",
+    "productName": "Penpot Awaker",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "target": [
+        "dir",
+        "dmg"
+      ],
+      "identity": "-",
+      "hardenedRuntime": false
+    }
+  }
+}
